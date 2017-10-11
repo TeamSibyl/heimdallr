@@ -3,10 +3,8 @@ import angr
 
 class SegmentationEngine(object):
     def __init__(self, angr_args):
-        b = angr.Project(*angr_args.get_args,
-                         load_options={'auto-load-libs': False},
-                         **angr_args.get_kwargs)
-        self.func_manager = b.analyses.CFGAccurate().kb.functions()
+        b = angr.Project(angr_args[0], load_options={'auto_load_libs': False}, **angr_args[1])
+        self.func_manager = b.analyses.CFGAccurate().kb.functions
 
     def get_segments(self):
         """
@@ -14,4 +12,4 @@ class SegmentationEngine(object):
         segment is single function.
         """
         # TODO implement this to return an iterable of type Segment
-        pass
+        return [1,2]

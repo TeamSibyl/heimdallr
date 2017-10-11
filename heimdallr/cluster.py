@@ -1,7 +1,7 @@
-import angr
 from argwrapper import ArgWrapper
 from segmentationengine import SegmentationEngine
-from profiler import ProfilerEngine
+from profilerengine import ProfilerEngine
+
 
 class Cluster(object):
     """
@@ -11,9 +11,8 @@ class Cluster(object):
     communication(probably through celery).
     """
 
-    def __init__(self, *args, **kwargs):
-        self.angr_args = ArgWrapper(args, kwargs)
-        self.b = angr.Project(*args, **kwargs)
+    def __init__(self, binary, **kwargs):
+        self.angr_args = (binary, kwargs)
 
     def get_segments(self):
         s = SegmentationEngine(self.angr_args)
