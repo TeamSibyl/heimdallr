@@ -1,10 +1,4 @@
+from angr.knowledge_plugins.functions.function import Function
 
-
-class Segment(object):
-    """
-    This class descibes a single segment of the binary. It stores:
-    1. Segment identifier
-    2. Block information  
-    """
-
-    def __init__():
+# TODO actually write a class representing a segment
+Segment = Function
